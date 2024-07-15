@@ -53,10 +53,10 @@ export default function Header(props) {
   );
 }
 
-Header.defaultProps = {
-  title: "Your Title Here",
-  searchBar: false,
-};
+// Header.defaultProps = {
+//   title: "Your Title Here",
+//   searchBar: false,
+// };
 
 Header.propTypes = {
   title: PropTypes.string,
