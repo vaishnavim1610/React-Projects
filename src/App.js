@@ -2,6 +2,7 @@ import "./App.css"; //inject css for app
 import Header from "./MyComponents/Header";
 import Footer from "./MyComponents/Footer";
 import Todos from "./MyComponents/Todos";
+import AddTodo from "./MyComponents/AddTodo";
 import React, { useState } from "react";
 
 function App() {
@@ -12,11 +13,23 @@ function App() {
     // todos.splice(index, 1);
 
     setTodos(
-      todos .filter((e) => {
+      todos.filter((e) => {
         return e !== todo;
       })
     );
   };
+
+  const addTodo=(title,desc)=>{
+    console.log("I am ading this todo",title,desc)
+    let sno=todos[todos.length-1].sno+1;
+    const myTodo={
+      sno:sno,
+      title:title,
+      desc:desc
+    }
+    setTodos([...todos,myTodo])   //created an array that will add myTodo to todos //syntax is using "..." (three dots)
+    console.log(myTodo);
+  }
   // setTodos is function that will update todos function
   const [todos, setTodos] = useState([
     { sno: 1, title: "Go to the market", desc: "you should go to market now." },
@@ -26,6 +39,7 @@ function App() {
   return (
     <>
       <Header title={"Todos List"} searchBar={true} />
+      <AddTodo addTodo={addTodo}/>
       <Todos todos={todos} onDelete={onDelete} />
       <Footer />
     </>
