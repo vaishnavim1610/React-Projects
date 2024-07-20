@@ -2,6 +2,7 @@ import React from "react";
 
 const Todo = ({ todo, onDelete }) => {
   return (
+    <>
     <div>
       <h4>{todo.title}</h4>
       <p>{todo.desc}</p>
@@ -14,6 +15,8 @@ const Todo = ({ todo, onDelete }) => {
         Delete
       </button>
     </div>
+    <hr />
+    </>
   );
 };
 

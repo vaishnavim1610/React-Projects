@@ -1,15 +1,23 @@
 import React, { useState } from "react";
 
 const AddTodo = (props) => {
-  const [title, setTitle] = useState("");    //useState is React Hook that allows you to add state to a functional component. It returns an array with two values: the current state and a function to update it. The Hook takes an initial state value as an argument and returns an updated state value whenever the setter function is called.
+  const [title, setTitle] = useState(""); //useState is React Hook that allows you to add state to a functional component. It returns an array with two values: the current state and a function to update it. The Hook takes an initial state value as an argument and returns an updated state value whenever the setter function is called.
   const [desc, setDesc] = useState("");
+  
+  
+  
+//submit function to work after submit button is clicked 
   const submit = (e) => {
     e.preventDefault(); //it will not reload website
-    if(!title || !desc){
-      alert("Title Or Description cannot be blank")
+    if (!title || !desc) {
+      alert("Title Or Description cannot be blank");
+    } else {
+      props.addTodo(title, desc);
+      setTitle("");  //once task is added title field is set to blank
+      setDesc("");   //once task is added description field is set to blank
     }
-    else{props.addTodo(title,desc);}
   };
+
   return (
     <div className="container">
       <h3>Add Your Work</h3>
@@ -20,8 +28,9 @@ const AddTodo = (props) => {
           </label>
           <input
             type="text"
-            value={title}                     //given input is stored in title variable
-            onChange={(e) => {                //arrow function is used to set the value to the title after changing
+            value={title} //given input is stored in title variable
+            onChange={(e) => {
+              //arrow function is used to set the value to the title after changing
               setTitle(e.target.value);
             }}
             className="form-control"
